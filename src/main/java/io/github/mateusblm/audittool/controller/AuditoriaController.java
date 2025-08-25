@@ -20,6 +20,7 @@ import io.github.mateusblm.audittool.model.NaoConformidadeEntity;
 import io.github.mateusblm.audittool.service.AuditoriaService;
 
 
+
 @RestController
 @RequestMapping("/api/auditoria")
 public class AuditoriaController {
