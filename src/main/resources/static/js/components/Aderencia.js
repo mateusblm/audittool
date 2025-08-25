@@ -1,5 +1,3 @@
-// static/js/components/Aderencia.js
-
 function Aderencia({ dados }) {
     const percentual = dados.percentualAderencia ? dados.percentualAderencia.toFixed(2) : 0;
     return (

@@ -5,7 +5,6 @@ function ModalNaoConformidade({ item, onAdicionar }) {
     const [classificacao, setClassificacao] = React.useState('Leve');
     const [prazo, setPrazo] = React.useState('');
 
-    // Efeito para limpar o formulário sempre que o modal for fechado
     React.useEffect(() => {
         const modalEl = document.getElementById('modalNC');
         const handleHide = () => {

@@ -1,5 +1,3 @@
-// static/js/components/FormularioItemChecklist.js
-
 function FormularioItemChecklist({ onAdicionar }) {
     const [item, setItem] = React.useState('');
     const [responsavel, setResponsavel] = React.useState('');
