@@ -52,7 +52,7 @@ function App() {
     const handleResolverNC = async (id) => {
         const success = await resolverNaoConformidade(id);
         if (success) {
-            carregarDados(); // Recarrega os dados para atualizar a interface
+            carregarDados(); 
         } else {
             alert("Erro ao tentar resolver a não conformidade.");
         }
@@ -117,8 +117,8 @@ function App() {
                                 <th>Responsável</th>
                                 <th>Prazo</th>
                                 <th>Status</th>
-                                <th>Data Resolução</th> {/* <-- NOVA COLUNA */}
-                                <th>Ação</th>           {/* <-- NOVA COLUNA */}
+                                <th>Data Resolução</th> 
+                                <th>Ação</th>           
                             </tr>
                         </thead>
                         <tbody>
@@ -133,7 +133,6 @@ function App() {
                                             {nc.status}
                                         </span>
                                     </td>
-                                    {/* ADICIONE O CÓDIGO ABAIXO */}
                                     <td>
                                         {nc.dataResolucao ? new Date(nc.dataResolucao + 'T00:00:00').toLocaleDateString('pt-BR') : '---'}
                                     </td>
