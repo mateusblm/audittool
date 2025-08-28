@@ -8,4 +8,5 @@ public class NaoConformidadeDTO {
     private String descricao;
     private String classificacao;
     private LocalDate prazo;
+    
 }
