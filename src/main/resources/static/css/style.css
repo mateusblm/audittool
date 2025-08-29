@@ -1,5 +1,6 @@
 body {
-    background-color: #f8f9fa;
+    background-color: #FFFFFF;
+    color: #3d3d3d;
 }
 
 .container {
@@ -8,11 +9,15 @@ body {
 }
 
 .card-header {
+    background-color: #004D40;
+    color: #ffffff;
     font-weight: bold;
+    border-color: #3d3d3d;
 }
 
 .aderencia-card {
-    border-left: 5px solid #0d6efd;
+    background-color: #FAFAFA;
+    border-left: 5px solid #7e7e7e;
 }
 
 .modal-backdrop {
@@ -25,5 +30,17 @@ body {
 
 .table-hover tbody tr:hover {
     cursor: pointer;
-    background-color: #e9ecef;
+    background-color: #c9c9c994;
+}
+
+.btn {
+    background-color: #004D40;
+}
+
+.btn:hover {
+    background-color: #01967d;
+}
+
+.texto-aderencia {
+    color: #01967d;
 }
