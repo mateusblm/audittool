@@ -94,7 +94,7 @@ function App() {
                                                 <td><span className={`badge ${item.status === 'SIM' ? 'bg-success' : item.status === 'NAO' ? 'bg-danger' : 'bg-secondary'}`}>{item.status.replace('_', ' ')}</span></td>
                                                 <td>{item.responsavel}</td>
                                                 <td>{item.classificacao}</td>
-                                                <td>{item.status === 'NAO' && <button className="btn btn-warning btn-sm" onClick={() => abrirModalNC(item)}>Adicionar NC</button>}</td>
+                                                <td>{item.status === 'NAO' && <button className="btn botao-aviso" onClick={() => abrirModalNC(item)}>Adicionar NC</button>}</td>
                                             </tr>
                                         ))}
                                     </tbody>

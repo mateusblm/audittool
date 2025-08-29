@@ -44,3 +44,12 @@ body {
 .texto-aderencia {
     color: #01967d;
 }
+
+.botao-aviso {
+    background-color: #004D40;
+    color: #FFFFFF;
+}
+
+.botao-aviso:hover {
+    background-color: #FF9800;
+}
