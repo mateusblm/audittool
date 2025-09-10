@@ -65,25 +65,35 @@ Uma IDE de sua preferência (ex: IntelliJ IDEA, Eclipse, VS Code).
 Uma conta de e-mail (ex: Gmail) para configurar o serviço de envio.
 
 1. Configuração do Backend
+
 a. Clone o repositório:
 
 git clone [https://github.com/mateusblm/audittool.git]([https://github.com/mateusblm/audittool.git])
+
 cd audittool
 
 b. Configure o serviço de e-mail:
+
 Abra o ficheiro src/main/resources/application.properties e insira as suas credenciais de e-mail.
 
 Atenção: Se usar o Gmail com autenticação de dois fatores, precisa de gerar uma "Senha de App". Saiba como aqui.
 
 # Exemplo para o Gmail
+
 spring.mail.host=smtp.gmail.com
+
 spring.mail.port=587
+
 spring.mail.username=seu-email@gmail.com
+
 spring.mail.password=SUA_SENHA_DE_APP
+
 spring.mail.properties.mail.smtp.auth=true
+
 spring.mail.properties.mail.smtp.starttls.enable=true
 
 2. Execução
+
 a. Pela IDE:
 
 Importe o projeto como um projeto Maven.
@@ -100,12 +110,15 @@ Navegue até a raiz do projeto e execute:
 O backend estará a ser executado em http://localhost:8080.
 
 3. Aceder ao Frontend
+
 Abra o seu navegador e aceda a:
+
 http://localhost:8080
 
 O Spring Boot servirá automaticamente o index.html e a aplicação estará pronta para ser usada.
 
 🗺️ Endpoints da API
+
 GET /api/auditoria/aderencia: Retorna os dados de aderência.
 
 GET /api/auditoria/checklist: Lista todos os itens do checklist.
