@@ -53,3 +53,7 @@ body {
 .botao-aviso:hover {
     background-color: #FF9800;
 }
+
+.btn btn-warning btn-sm {
+    color: #ffffff 
+}

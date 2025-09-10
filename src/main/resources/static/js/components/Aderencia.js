@@ -15,7 +15,7 @@ function Aderencia({ dados }) {
                     </div>
                     <div className="col">
                         <h5>{dados.itensNaoSeAplica || 0}</h5>
-                        <p className="text-muted">Não se Aplica</p>
+                        <p className="text-muted">N/A</p>
                     </div>
                     <div className="col">
                         <h4 className="texto-aderencia">{percentual}%</h4>

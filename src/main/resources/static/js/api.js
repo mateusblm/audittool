@@ -44,3 +44,12 @@ async function resolverNaoConformidade(id) {
     });
     return response.ok;
 }
+
+async function escalonarNaoConformidade(id, email) {
+    const response = await fetch(`${API_URL}/naoconformidade/${id}/escalonar`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: email }), // Envia o email no corpo da requisição
+    });
+    return response.ok;
+}
