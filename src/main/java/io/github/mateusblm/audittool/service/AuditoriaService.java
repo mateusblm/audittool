@@ -2,6 +2,7 @@ package io.github.mateusblm.audittool.service;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,6 +24,9 @@ public class AuditoriaService {
 
     @Autowired
     private NaoConformidadeRepository naoConformidadeRepository;
+
+    @Autowired
+    private EmailService emailService;
 
     public ItemChecklistEntity criarItemChecklist(ItemChecklistDTO dto) {
         ItemChecklistEntity itemChecklist = new ItemChecklistEntity();
@@ -52,6 +56,32 @@ public class AuditoriaService {
         return naoConformidadeRepository.save(naoConformidade);
     }
 
+     public void escalonarNaoConformidade(Long naoConformidadeId, String emailPara) {
+        NaoConformidadeEntity nc = naoConformidadeRepository.findById(naoConformidadeId)
+                .orElseThrow(() -> new RuntimeException("Não conformidade não encontrada."));
+
+        nc.setStatus(StatusNC.ESCALONADO); 
+        naoConformidadeRepository.save(nc); 
+
+        String assunto = "Escalonamento de Não Conformidade: " + nc.getItemChecklistEntity().getItem();
+        String texto = String.format(
+            "A seguinte não conformidade foi escalonada para sua atenção:\n\n" +
+            "Item do Checklist: %s\n" +
+            "Descrição da NC: %s\n" +
+            "Responsável Original: %s\n" +
+            "Classificação: %s\n" +
+            "Prazo: %s\n\n" +
+            "Por favor, verifique a situação.",
+            nc.getItemChecklistEntity().getItem(),
+            nc.getDescricao(),
+            nc.getResponsavel(),
+            nc.getClassificacao(),
+            nc.getPrazo().toString()
+        );
+
+        emailService.enviarEmail(emailPara, assunto, texto);
+    }
+
     public AderenciaDTO calcularAderencia() {
         long totalItens = itemChecklistRepository.count();
         long itensConformes = itemChecklistRepository.findAll().stream()
@@ -71,11 +101,14 @@ public class AuditoriaService {
         return itemChecklistRepository.findAll();
     }
 
-    public List<NaoConformidadeEntity> obterTodasNaoConformidades() {
-        return naoConformidadeRepository.findAll();
+    public List<NaoConformidadeDTO> obterTodasNaoConformidades() {
+        return naoConformidadeRepository.findAll()
+                .stream()
+                .map(NaoConformidadeDTO::new) 
+                .collect(Collectors.toList());
     }
 
-        public NaoConformidadeEntity resolverNaoConformidade(Long naoConformidadeId) {
+    public NaoConformidadeEntity resolverNaoConformidade(Long naoConformidadeId) {
         NaoConformidadeEntity naoConformidade = naoConformidadeRepository.findById(naoConformidadeId)
                 .orElseThrow(() -> new RuntimeException("Não conformidade não encontrada com o ID: " + naoConformidadeId));
 

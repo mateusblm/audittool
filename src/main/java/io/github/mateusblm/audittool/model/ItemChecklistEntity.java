@@ -1,5 +1,9 @@
 package io.github.mateusblm.audittool.model;
 
+import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -15,6 +19,10 @@ public class ItemChecklistEntity {
 
     @Enumerated(EnumType.STRING)
     private Status status;
+
+    @OneToMany(mappedBy = "itemChecklistEntity", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonIgnore
+    private List<NaoConformidadeEntity> naoConformidades;
 
     private String responsavel;
     private String classificacao;

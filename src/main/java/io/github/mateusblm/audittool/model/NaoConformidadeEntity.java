@@ -14,7 +14,7 @@ public class NaoConformidadeEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @OneToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "item_checklist_id", referencedColumnName = "id")
     private ItemChecklistEntity itemChecklistEntity;
 
@@ -29,7 +29,7 @@ public class NaoConformidadeEntity {
     private LocalDate dataResolucao;
 
     public enum StatusNC {
-        ABERTO, RESOLVIDO
+        ABERTO, RESOLVIDO, ESCALONADO 
     }
     
 }

@@ -1,6 +1,7 @@
 package io.github.mateusblm.audittool.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -18,8 +19,6 @@ import io.github.mateusblm.audittool.dto.NaoConformidadeDTO;
 import io.github.mateusblm.audittool.model.ItemChecklistEntity;
 import io.github.mateusblm.audittool.model.NaoConformidadeEntity;
 import io.github.mateusblm.audittool.service.AuditoriaService;
-
-
 
 @RestController
 @RequestMapping("/api/auditoria")
@@ -50,7 +49,7 @@ public class AuditoriaController {
     }
     
     @GetMapping("/naoconformidade")
-    public ResponseEntity<List<NaoConformidadeEntity>> obterTodasNaoConformidades() {
+    public ResponseEntity<List<NaoConformidadeDTO>> obterTodasNaoConformidades() {
         return ResponseEntity.ok(auditoriaService.obterTodasNaoConformidades());
     }
 
@@ -64,6 +63,20 @@ public class AuditoriaController {
         try {
             NaoConformidadeEntity ncResolvida = auditoriaService.resolverNaoConformidade(id);
             return ResponseEntity.ok(ncResolvida);
+        } catch (RuntimeException e) {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+    @PostMapping("/naoconformidade/{id}/escalonar")
+    public ResponseEntity<Void> escalonarNaoConformidade(@PathVariable Long id, @RequestBody Map<String, String> payload) {
+        try {
+            String email = payload.get("email");
+            if (email == null || email.trim().isEmpty()) {
+                return ResponseEntity.badRequest().build();
+            }
+            auditoriaService.escalonarNaoConformidade(id, email);
+            return ResponseEntity.ok().build();
         } catch (RuntimeException e) {
             return ResponseEntity.notFound().build();
         }
