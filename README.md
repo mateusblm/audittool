@@ -1,4 +1,5 @@
 Ferramenta de Auditoria de Projetos
+
 Uma aplicação web full-stack desenvolvida para automatizar e gerir o processo de auditoria de projetos e documentos. A ferramenta permite criar checklists dinâmicos, registar não conformidades, calcular a aderência automaticamente e gerir o ciclo de vida de cada item, incluindo resolução e escalonamento por e-mail.
 
 ✨ Funcionalidades Principais
