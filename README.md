@@ -53,6 +53,7 @@ Bootstrap 5: Para a criação de um layout moderno e responsivo.
 Babel (standalone): Para a transpilação de JSX diretamente no navegador.
 
 🚀 Como Executar o Projeto
+
 Siga os passos abaixo para executar a aplicação localmente.
 
 Pré-requisitos
@@ -109,9 +110,9 @@ Navegue até a raiz do projeto e execute:
 
 O backend estará a ser executado em http://localhost:8080.
 
-3. Aceder ao Frontend
+3. Abrir o Frontend
 
-Abra o seu navegador e aceda a:
+Abra o seu navegador e entre em:
 
 http://localhost:8080
 
